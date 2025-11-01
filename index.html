@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Untuk Mas Asa</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Georgia, serif;
+            background-color: #e6f2ff;
+            color: #333;
+            line-height: 1.6;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 800px;
+            width: 100%;
+            background-color: white;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            padding: 30px;
+            margin-top: 20px;
+            text-align: center;
+        }
+
+        h1 {
+            color: #4a90e2;
+            margin-bottom: 20px;
+            font-size: 2.2rem;
+        }
+
+        .cat-icon {
+            width: 120px;
+            height: 120px;
+            margin: 0 auto 20px;
+            background-color: #e6f2ff;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+
+        .cat-icon::before {
+            content: "";
+            position: absolute;
+            width: 40px;
+            height: 30px;
+            background-color: #4a90e2;
+            border-radius: 50% 50% 0 0;
+            top: 25px;
+            left: 20px;
+        }
+
+        .cat-icon::after {
+            content: "";
+            position: absolute;
+            width: 40px;
+            height: 30px;
+            background-color: #4a90e2;
+            border-radius: 50% 50% 0 0;
+            top: 25px;
+            right: 20px;
+        }
+
+        .cat-face {
+            width: 80px;
+            height: 80px;
+            background-color: #4a90e2;
+            border-radius: 50%;
+            position: relative;
+        }
+
+        .cat-face::before,
+        .cat-face::after {
+            content: "";
+            position: absolute;
+            width: 15px;
+            height: 15px;
+            background-color: white;
+            border-radius: 50%;
+            top: 25px;
+        }
+
+        .cat-face::before {
+            left: 15px;
+        }
+
+        .cat-face::after {
+            right: 15px;
+        }
+
+        .cat-nose {
+            position: absolute;
+            width: 10px;
+            height: 5px;
+            background-color: white;
+            border-radius: 50%;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        p {
+            margin-bottom: 20px;
+            font-size: 1.1rem;
+        }
+
+        .button {
+            background-color: #4a90e2;
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            border-radius: 30px;
+            font-family: Georgia, serif;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-top: 10px;
+            margin-right: 10px;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .button:hover {
+            background-color: #3a7bc8;
+            transform: scale(1.05);
+        }
+
+        .button-whatsapp {
+            background-color: #25D366;
+        }
+
+        .button-whatsapp:hover {
+            background-color: #128C7E;
+        }
+
+        .popup {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            z-index: 100;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .popup-content {
+            background-color: white;
+            padding: 30px;
+            border-radius: 15px;
+            max-width: 500px;
+            width: 90%;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            position: relative;
+        }
+
+        .popup-close {
+            position: absolute;
+            top: 10px;
+            right: 15px;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: #4a90e2;
+        }
+
+        .love-letter {
+            display: none;
+            margin-top: 30px;
+            text-align: left;
+            padding: 20px;
+            background-color: #f0f8ff;
+            border-radius: 10px;
+            border-left: 5px solid #4a90e2;
+        }
+
+        .typing-text {
+            overflow: hidden;
+            border-right: 2px solid #4a90e2;
+            white-space: pre-wrap;
+            margin: 0 auto;
+            letter-spacing: 0.05em;
+            animation: typing 3.5s steps(40, end), blink-caret 0.75s step-end infinite;
+        }
+
+        @keyframes typing {
+            from { width: 0 }
+            to { width: 100% }
+        }
+
+        @keyframes blink-caret {
+            from, to { border-color: transparent }
+            50% { border-color: #4a90e2 }
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        .button-container {
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="cat-icon">
+            <div class="cat-face">
+                <div class="cat-nose"></div>
+            </div>
+        </div>
+        
+        <h1>Untuk Maca tersayang! XD</h1>
+        
+        <p>Hi, Ganteng! Mau tau nggak ada apa?</p>
+        
+        <button class="button" id="mainButton">Coba tap aku! :3</button>
+        
+        <div class="love-letter" id="loveLetter">
+            <p class="typing-text" id="typedText"></p>
+        </div>
+
+        <div class="button-container" id="buttonContainer" style="display: none;">
+            <button class="button" id="restartButton">Balik lagi~</button>
+            <a href="https://wa.me/+6288973769582?text=Iyaa,+sayang..+aku+juga+sayang+kamu." class="button button-whatsapp" id="whatsappButton">SAYANG AKU GAK? JAWAB!</a>
+        </div>
+    </div>
+
+    <!-- Popup 1 -->
+    <div class="popup" id="popup1">
+        <div class="popup-content">
+            <span class="popup-close">&times;</span>
+            <p>Pertamaaa, aku mau berterima kasih karena Mas baik ke aku! Aku senang sekali.</p>
+            <button class="button" id="nextButton1">☆</button>
+        </div>
+    </div>
+
+    <!-- Popup 2 -->
+    <div class="popup" id="popup2">
+        <div class="popup-content">
+            <span class="popup-close">&times;</span>
+            <p>Kedua, Macaaa harus semangat dong. Anak ganteng anak baik, anak hebat!</p>
+            <button class="button" id="nextButton2">✭</button>
+        </div>
+    </div>
+
+    <!-- Popup 3 -->
+    <div class="popup" id="popup3">
+        <div class="popup-content">
+            <span class="popup-close">&times;</span>
+            <p>Dan, ketiga ... aku sayang kamu, Mas Asa! Selalu!</p>
+            <button class="button" id="nextButton3">★</button>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const mainButton = document.getElementById('mainButton');
+            const popup1 = document.getElementById('popup1');
+            const popup2 = document.getElementById('popup2');
+            const popup3 = document.getElementById('popup3');
+            const nextButton1 = document.getElementById('nextButton1');
+            const nextButton2 = document.getElementById('nextButton2');
+            const nextButton3 = document.getElementById('nextButton3');
+            const loveLetter = document.getElementById('loveLetter');
+            const typedText = document.getElementById('typedText');
+            const buttonContainer = document.getElementById('buttonContainer');
+            const restartButton = document.getElementById('restartButton');
+            const whatsappButton = document.getElementById('whatsappButton');
+            const closeButtons = document.querySelectorAll('.popup-close');
+            
+            // Love letter text
+            const letterText = `Halo, Mas Asa kesayanganku. Gantengnya aku. Manisnya aku. Lucunya aku. Seluruhnya aku! Ini ... Lena. Pertama-tama, aku mau bilang kalau aku saaangat beruntung bisa kenal kamu. Kayak, kamu itu bener-bener anugerah buat aku.
+
+Aku suka cara kamu yang selalu berhasil buat aku senyum, salting, terharu, pingsan HAHAHA semuaaanya. Mas Asa, I couldn't ask for anything but having you in my life. Maka dari itu, aku pengen Mas tau betaaapa berharganya Mas untuk Lena, sampai kapanpun itu.
+
+Dan, Mas Asa. Tolong baca ini baik-baik. Aku minta kamu untuk selalu percaya rencana Allah, dan berjuang sebaik mungkin. Mas, aku tau kamu pasti bisa, dan segalanya akan dimudahkan buat kamuuu. Aku selalu ada di sini, doain kamu, dukung kamu, dan sayang kamu! Jangan pernah ragu sama kemampuan kamu, yaaa. Karena aku yakin, kamu itu luarrr biasa.
+
+Terakhir, aku cuma mau bilang satu hal penting:
+
+Aku mencintai Mas lebih dari kata-kata bisa ungkapkan. Izinin aku jadi Lena yang bisa ngusilin, gangguin kamu selamanya, ya. Semoga terlaksana, sampai tua nanti! HEHE. I looove you so much, Maca. Always and forever.`;
+
+            // Main button click event
+            mainButton.addEventListener('click', function() {
+                popup1.style.display = 'flex';
+            });
+
+            // Next button events
+            nextButton1.addEventListener('click', function() {
+                popup1.style.display = 'none';
+                popup2.style.display = 'flex';
+            });
+
+            nextButton2.addEventListener('click', function() {
+                popup2.style.display = 'none';
+                popup3.style.display = 'flex';
+            });
+
+            nextButton3.addEventListener('click', function() {
+                popup3.style.display = 'none';
+                loveLetter.style.display = 'block';
+                mainButton.style.display = 'none';
+                buttonContainer.style.display = 'block';
+                
+                // Typewriter effect
+                let i = 0;
+                const speed = 30; // typing speed in milliseconds
+                
+                function typeWriter() {
+                    if (i < letterText.length) {
+                        typedText.innerHTML += letterText.charAt(i);
+                        i++;
+                        setTimeout(typeWriter, speed);
+                    }
+                }
+                
+                typeWriter();
+            });
+
+            // Restart button event
+            restartButton.addEventListener('click', function() {
+                loveLetter.style.display = 'none';
+                buttonContainer.style.display = 'none';
+                mainButton.style.display = 'inline-block';
+                typedText.innerHTML = '';
+            });
+
+            // Close popup events
+            closeButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    popup1.style.display = 'none';
+                    popup2.style.display = 'none';
+                    popup3.style.display = 'none';
+                });
+            });
+        });
+    </script>
+</body>
+</html>
